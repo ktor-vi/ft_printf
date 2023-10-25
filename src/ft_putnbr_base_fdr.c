@@ -10,9 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/ft_printf.h"
 #include <unistd.h>
 
-int	ft_strlen(char *str)
+long	ft_strllen(char *str)
 {
 	int	i;
 
@@ -69,30 +70,28 @@ int	find_dupc(char *str)
 	return (0);
 }
 
-void	ft_putnbr_base(int nbr, char *base)
+int	ft_putnbr_base_fdr(long long nbr, int i, char *base, int fd)
 {
-	long	result;
-	int		base_len;
+	long long	result;
+	long long	base_len;
 
 	result = nbr;
-	base_len = ft_strlen(base);
+	base_len = ft_strllen(base);
+	if (!ft_strncmp(base, "", 1))
+		return (11);
 	if (base_len > 1 && !find_dupc(base) && !ft_strstr_bool(base, "+")
 		&& !ft_strstr_bool(base, "-") && !ft_strstr_bool(base, "\t"))
 	{
-		if (result < 0)
-		{
-			write(1, "-", 1);
-			result = -result;
-		}
-		if (result == 0)
-		{
-			write(1, "0", 1);
-			return ;
-		}
-		if (result >= base_len)
-		{
-			ft_putnbr_base(result / base_len, base);
-		}
-		write(1, &base[result % base_len], 1);
+		if (result < INT_MIN)
+			return (write(fd, "0", 1));
+		else if (result < 0 && i++)
+			result *= write(fd, "-", 1) * -1;
+		else if (result == 0)
+			return (i += write(fd, "0", 1));
+		else if (result >= base_len)
+			i = ft_putnbr_base_fdr(result / base_len, i++, base, fd);
+		write(fd, &base[result % base_len], 1);
+		i++;
 	}
+	return (i);
 }
