@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putchar_fdr.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vphilipp <vphilipp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vphilipp <vphilipp@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 17:28:51 by vphilipp          #+#    #+#             */
-/*   Updated: 2023/10/16 17:28:53 by vphilipp         ###   ########.fr       */
+/*   Updated: 2023/10/25 19:50:32 by vphilipp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int ft_putchar_fdr(char c, int fd)
+int	ft_putchar_fdr(char c, int fd)
 {
-	write(fd, &c, 1);
-	return (1);
+	int	i;
+
+	i = 0;
+	i += write(fd, &c, 1);
+	if (i < 0)
+		return (-1);
+	else
+		return (1);
 }

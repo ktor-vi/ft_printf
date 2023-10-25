@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vphilipp <vphilipp@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/25 16:29:22 by vphilipp          #+#    #+#             */
+/*   Updated: 2023/10/25 16:29:23 by vphilipp         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
@@ -7,7 +19,8 @@
 
 int		ft_printf(const char *str, ...);
 int		ft_putnbr_base_fdr(long long nbr, int i, char *base, int fd);
-int	ft_putul_base_fdr(unsigned long nbr, int i, char *base, int fd);
+int		ft_putui_base_fdr(unsigned int nbr, int i, char *base, int fd);
+int		ft_putul_base_fdr(unsigned long nbr, int i, char *base, int fd);
 
 long	ft_strllen(char *str);
 

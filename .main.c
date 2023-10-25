@@ -72,8 +72,10 @@ int	main(void)
 	ft_printf("--------------|%%u FLAG|--------------\n");
 	ft_printf("|      UI_MAX: %u                     \n", UINT_MAX);
 	   printf("OG     UI_MAX: %u                     \n", UINT_MAX);
-       printf("|      UI_MAX: %u                     \n", UINT_MAX);
-	   printf("OG     UI_MAX: %u                     \n", UINT_MAX);
+    ft_printf("|      UI_MAX: %u                     \n", LONG_MAX);
+	   printf("OG     UI_MAX: %u                     \n", LONG_MAX);
+	ft_printf("|      UI_MAX: %u                     \n", 9223372036854775807LL);
+	   printf("OG     UI_MAX: %u                     \n", 9223372036854775807LL);
 	ft_printf("|      UL_MAX: %u                     \n", UINT_MAX);
 	   printf("OG     UL_MAX: %u                     \n", UINT_MAX);
        printf("|       L_MAX: %u                     \n", UINT_MAX);
@@ -86,8 +88,8 @@ int	main(void)
 
 	ft_printf("--------------|%%x FLAG|--------------\n");
 	
-	ft_printf("|       UIMAX: %x                     \n", UINT_MAX);
-	   printf("OG      UIMAX: %x                     \n", UINT_MAX);
+	ft_printf("|       UIMAX: %x                     \n",  2019496700);
+	   printf("OG      UIMAX: %x                     \n",  2019496700);
 	ft_printf("|       ULMAX: %x                     \n", ULONG_MAX);
 	   printf("OG      ULMAX: %x                     \n", ULONG_MAX);
 	ft_printf("|    LONG_MIN: %x                     \n", LONG_MIN);

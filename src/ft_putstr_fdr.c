@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putstr_fdr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vphilipp <vphilipp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vphilipp <vphilipp@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 17:46:50 by vphilipp          #+#    #+#             */
-/*   Updated: 2023/10/16 17:47:01 by vphilipp         ###   ########.fr       */
+/*   Updated: 2023/10/25 19:49:16 by vphilipp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,21 @@ int	ft_putstr_fdr(char *s, int fd)
 {
 	int	i;
 
+	i = 0;
 	if (s == NULL)
 	{
-		write(fd, "(null)", 6);
-		return (6);
+		i += write(fd, "(null)", 6);
+		if (i < 6)
+			return (-1);
+		else
+			return (6);
 	}
-	i = 0;
 	while (i < ft_strlen(s))
 	{
-		write(fd, &s[i], 1);
-		i++;
+		if (write(fd, &s[i], 1) < 0)
+			return (-1);
+		else
+			i++;
 	}
 	return (ft_strlen(s));
 }

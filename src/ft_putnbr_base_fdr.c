@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   ft_putnbr_base_fdr.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vphilipp <vphilipp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vphilipp <vphilipp@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 12:22:33 by vphilipp          #+#    #+#             */
-/*   Updated: 2023/08/10 09:41:56 by vphilipp         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:28:57 by vphilipp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ int	ft_putnbr_base_fdr(long long nbr, int i, char *base, int fd)
 	{
 		if (result < INT_MIN)
 			return (write(fd, "0", 1));
+		if (result > LONG_MAX)
+			result = LONG_MAX;
 		else if (result < 0 && i++)
 			result *= write(fd, "-", 1) * -1;
 		else if (result == 0)
